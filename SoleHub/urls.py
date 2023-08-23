@@ -15,7 +15,22 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import include
+from rest_framework import routers
+
+from solehubapi.views import register_user, check_user, ProductView, CartView, UserView, OrderView
+
+router = routers.DefaultRouter(trailing_slash=False)
+router.register(r'products', ProductView, 'product')
+router.register(r'carts', CartView, 'cart')
+router.register(r'users', UserView, 'user')
+path('register', register_user),
+path('checkuser', check_user),
+router.register(r'orders', OrderView, 'order')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include(router.urls)),
+    path('register', register_user),
+    path('checkuser', check_user),
 ]

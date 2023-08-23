@@ -37,8 +37,7 @@ class CartView(ViewSet):
 
         cart = Cart.objects.create(
             order_id = orderId,
-            product_id =productId,
-            quantity=request.data["quantity"]   
+            product_id =productId 
         )
         serializer = CartSerialzer(cart)
         return Response(serializer.data)  
@@ -61,7 +60,7 @@ class CartView(ViewSet):
 
         
 class CartSerialzer(serializers.ModelSerializer):
-    """JSON serializer for events
+    """JSON serializer for carts
     """
     class Meta:
         model = Cart
