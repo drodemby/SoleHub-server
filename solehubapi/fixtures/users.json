@@ -1,0 +1,14 @@
+[
+  {
+      "model": "solehubapi.user",
+      "pk": 1,
+      "fields": {
+          "first_name": "Morgan",
+          "last_name": "Taylor",
+          "address": "320 Oak Hill Drive",
+          "email": "scooby@gmail.com",
+          "shoe_size": "12",
+          "uid": 1
+      }
+  }
+]
