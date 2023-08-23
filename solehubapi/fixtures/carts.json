@@ -1,0 +1,10 @@
+[
+  {
+      "model": "solehubapi.orderitem",
+      "pk": 1,
+      "fields": {
+          "order_id": 1,
+          "product_id": 1
+      }
+  }
+]

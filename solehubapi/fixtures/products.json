@@ -1,0 +1,16 @@
+[
+  {
+      "model": "solehubapi.product",
+      "pk": 1,
+      "fields": {
+          "name": "Jordan 12 Taxis",
+          "image": "",
+          "description": "Air Jordan 12s",
+          "condition": "Good",
+          "price": "120",
+          "color": "Black, White, Silver",
+          "brand": "Jordan",
+          "seller_id": 1
+      }
+  }
+]

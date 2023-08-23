@@ -1,0 +1,11 @@
+[
+  {
+      "model": "solehubapi.order",
+      "pk": 1,
+      "fields": {
+          "customer_id": 1,
+          "status": 0,
+          "payment_type": "Card"
+      }
+  }
+]
