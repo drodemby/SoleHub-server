@@ -15,7 +15,7 @@ class OrderView(ViewSet):
             Response -- JSON serialized order
         """
 
-        custId = User.objects.get(uid=request.data["customer_id"])
+        custId = User.objects.get(pk=request.data["customer_id"])
         
         order = Order.objects.create(
             status=request.data["status"],
@@ -43,7 +43,7 @@ class OrderView(ViewSet):
 
         order = Order.objects.get(pk=pk)
         order.status = request.data["status"]
-        order.customer_id = User.objects.get(uid=request.data["customer_id"])
+        order.customer_id = User.objects.get(pk=request.data["customer_id"])
         order.payment_type = request.data["payment_type"]
         order.save()
 
@@ -71,4 +71,4 @@ class OrderSerializer(serializers.ModelSerializer):
     """
     class Meta:
         model = Order
-        fields = ('id', 'customer_id', 'status')
+        fields = ('id', 'customer_id', 'status', 'payment_type')
