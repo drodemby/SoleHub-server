@@ -9,4 +9,5 @@ class Product(models.Model):
     price = models.IntegerField()
     color = models.CharField(max_length=50)
     brand = models.CharField(max_length=50)
-    seller_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    seller_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name='seller_info')
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_info')
