@@ -34,8 +34,8 @@ class ProductView(ViewSet):
     
     def create(self, request):
  
-        userId = User.objects.get(uid=request.data["userId"])
-        sellerId = User.objects.get(pk=request.data["sellerId"])
+        userId = User.objects.get(pk=request.data["userId"])
+        sellerId = User.objects.get(uid=request.data["sellerId"])
 
         product = Product.objects.create(
             name=request.data["name"],
@@ -60,8 +60,8 @@ class ProductView(ViewSet):
         product.price=request.data["price"]
         product.color=request.data["color"]        
         product.brand=request.data["brand"]
-        product.seller_id= User.objects.get(pk=request.data["sellerId"])
-        product.user_id= User.objects.get(uid=request.data["userId"])
+        product.seller_id= User.objects.get(uid=request.data["sellerId"])
+        product.user_id= User.objects.get(pk=request.data["userId"])
        
 
         product.save()
