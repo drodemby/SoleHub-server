@@ -34,8 +34,7 @@ class ProductView(ViewSet):
     
     def create(self, request):
  
-        userId = User.objects.get(pk=request.data["userId"])
-        sellerId = User.objects.get(uid=request.data["sellerId"])
+        seller_id = User.objects.get(pk=request.data["sellerId"])
 
         product = Product.objects.create(
             name=request.data["name"],
@@ -45,8 +44,7 @@ class ProductView(ViewSet):
             price=request.data["price"],
             color=request.data["color"],
             brand=request.data["brand"],
-            seller_id=sellerId,
-            user_id=userId    
+            seller_id=seller_id,
         )
         serializer = ProductSerializer(product)
         return Response(serializer.data)  
@@ -60,8 +58,7 @@ class ProductView(ViewSet):
         product.price=request.data["price"]
         product.color=request.data["color"]        
         product.brand=request.data["brand"]
-        product.seller_id= User.objects.get(uid=request.data["sellerId"])
-        product.user_id= User.objects.get(pk=request.data["userId"])
+        product.seller_id= User.objects.get(pk=request.data["sellerId"])
        
 
         product.save()
@@ -78,5 +75,5 @@ class ProductSerializer(serializers.ModelSerializer):
     """
     class Meta:
         model = Product
-        fields = ('id' ,'name', 'image', 'description','seller_id', 'price','brand','color','user_id')
+        fields = ('id' ,'name', 'image', 'description','seller_id', 'price','brand','color')
         depth = 1
