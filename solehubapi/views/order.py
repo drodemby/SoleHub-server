@@ -57,9 +57,30 @@ class OrderView(ViewSet):
             Response -- JSON serialized list of category
         """
         order = Order.objects.all()
+        
+        customer_id = request.query_params.get('customer_id', None)
+        status = request.query_params.get('status')
+    
+        if customer_id is not None:
+            try:
+                # customer_id query param is converted to an integer
+                customer_id = int(customer_id)
+            except ValueError:
+                return Response({'message': 'Invalid customer_id'}, status=status.HTTP_400_BAD_REQUEST)
+                 
+            #filter orders by customer_id
+            order = order.filter(customer_id=customer_id)
+            
+        if status is not None:
+            if status.lower() in ['true', 'false']:
+                status = status.lower() == 'true'
+                order = order.filter(status=status)
+            else:
+                return Response({'message': 'Invalid status value'}, status=status.HTTP_400_BAD_REQUEST)
+                
         serializer = OrderSerializer(order, many=True)
         return Response(serializer.data)
-    
+            
     def destroy(self, request, pk):
         order = Order.objects.get(pk=pk)
         order.delete()

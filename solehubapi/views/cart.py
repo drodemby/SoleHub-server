@@ -31,9 +31,9 @@ class CartView(ViewSet):
       
     def create(self, request):
  
-       
-        orderId = Order.objects.get(pk=request.data["order_id"])
-        productId = Product.objects.get(pk=request.data["product_id"])
+        print(request.data)
+        orderId = Order.objects.get(pk=request.data["orderId"])
+        productId = Product.objects.get(pk=request.data["productId"])
 
         cart = Cart.objects.create(
             order_id = orderId,
