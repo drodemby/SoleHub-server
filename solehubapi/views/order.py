@@ -93,3 +93,4 @@ class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
         fields = ('id', 'customer_id', 'status', 'payment_type')
+        depth = 1
